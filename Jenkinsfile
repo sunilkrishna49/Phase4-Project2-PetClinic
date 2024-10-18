@@ -5,7 +5,7 @@ pipeline{
         stage('Build'){
             steps{
                 // Check out the repository code
-                git 'https://github.com/sunilkrishna49/Phase4-Project2-PetClinic.git'
+                git branch: 'main', url: 'https://github.com/sunilkrishna49/Phase4-Project2-PetClinic.git'
 
                 // Run the Maven Compile to build the project
                 echo 'Building the project with Maven Compile'
