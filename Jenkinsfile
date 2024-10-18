@@ -5,7 +5,11 @@ pipeline {
         stage('Build') {
             steps {
                 // Check out the repository code
-                git branch: 'main', url: 'https://github.com/sunilkrishna49/Phase4-Project2-PetClinic.git'
+                git 'https://github.com/sunilkrishna49/Phase4-Project2-PetClinic.git'
+
+                // Give execute permissions to the Maven wrapper script
+                echo 'Giving execute permission to mvnw'
+                sh 'chmod +x mvnw'
 
                 // Run the Maven Compile to build the project
                 echo 'Building the project with Maven Compile'
