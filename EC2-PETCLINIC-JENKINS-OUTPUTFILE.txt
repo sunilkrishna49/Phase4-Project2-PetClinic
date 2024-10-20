@@ -1,0 +1,289 @@
+Started by user admin
+Obtained Jenkinsfile from git https://github.com/sunilkrishna49/Phase4-Project2-PetClinic
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/petClinic1
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/sunilkrishna49/Phase4-Project2-PetClinic
+ > git init /var/lib/jenkins/workspace/petClinic1 # timeout=10
+Fetching upstream changes from https://github.com/sunilkrishna49/Phase4-Project2-PetClinic
+ > git --version # timeout=10
+ > git --version # 'git version 2.40.1'
+ > git fetch --tags --force --progress -- https://github.com/sunilkrishna49/Phase4-Project2-PetClinic +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/sunilkrishna49/Phase4-Project2-PetClinic # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision ef22e96b5be2191815793c2103fd44b1ff01c768 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f ef22e96b5be2191815793c2103fd44b1ff01c768 # timeout=10
+Commit message: "Merge branch 'main' of https://github.com/sunilkrishna49/Phase4-Project2-PetClinic"
+ > git rev-list --no-walk ef22e96b5be2191815793c2103fd44b1ff01c768 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/petClinic1/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/sunilkrishna49/Phase4-Project2-PetClinic.git # timeout=10
+Fetching upstream changes from https://github.com/sunilkrishna49/Phase4-Project2-PetClinic.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.40.1'
+ > git fetch --tags --force --progress -- https://github.com/sunilkrishna49/Phase4-Project2-PetClinic.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision ef22e96b5be2191815793c2103fd44b1ff01c768 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f ef22e96b5be2191815793c2103fd44b1ff01c768 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main ef22e96b5be2191815793c2103fd44b1ff01c768 # timeout=10
+Commit message: "Merge branch 'main' of https://github.com/sunilkrishna49/Phase4-Project2-PetClinic"
+[Pipeline] echo
+Giving execute permission to mvnw
+[Pipeline] sh
++ chmod +x mvnw
+[Pipeline] echo
+Building the project with Maven Compile
+[Pipeline] sh
++ ./mvnw clean install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.example:pet-clinic >-----------------------
+[INFO] Building Pet Clinic 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ pet-clinic ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pet-clinic ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 6 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ pet-clinic ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to /var/lib/jenkins/workspace/petClinic1/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ pet-clinic ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/petClinic1/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ pet-clinic ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/petClinic1/target/test-classes
+[INFO] 
+[INFO] --- surefire:3.0.0:test (default-test) @ pet-clinic ---
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ pet-clinic ---
+[INFO] Building jar: /var/lib/jenkins/workspace/petClinic1/target/pet-clinic-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.1.2:repackage (repackage) @ pet-clinic ---
+[INFO] Replacing main artifact /var/lib/jenkins/workspace/petClinic1/target/pet-clinic-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/lib/jenkins/workspace/petClinic1/target/pet-clinic-1.0.0.jar.original
+[INFO] 
+[INFO] --- install:3.1.1:install (default-install) @ pet-clinic ---
+[INFO] Installing /var/lib/jenkins/workspace/petClinic1/pom.xml to /var/lib/jenkins/.m2/repository/com/example/pet-clinic/1.0.0/pet-clinic-1.0.0.pom
+[INFO] Installing /var/lib/jenkins/workspace/petClinic1/target/pet-clinic-1.0.0.jar to /var/lib/jenkins/.m2/repository/com/example/pet-clinic/1.0.0/pet-clinic-1.0.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.355 s
+[INFO] Finished at: 2024-10-20T04:10:51Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] echo
+Testing the project with Maven Test
+[Pipeline] sh
++ ./mvnw test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.example:pet-clinic >-----------------------
+[INFO] Building Pet Clinic 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pet-clinic ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 6 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ pet-clinic ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ pet-clinic ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/petClinic1/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ pet-clinic ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/petClinic1/target/test-classes
+[INFO] 
+[INFO] --- surefire:3.0.0:test (default-test) @ pet-clinic ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.425 s
+[INFO] Finished at: 2024-10-20T04:10:58Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Package)
+[Pipeline] echo
+Packaging the Project with Maven Package
+[Pipeline] sh
++ ./mvnw package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.example:pet-clinic >-----------------------
+[INFO] Building Pet Clinic 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pet-clinic ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 6 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ pet-clinic ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ pet-clinic ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/petClinic1/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ pet-clinic ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/petClinic1/target/test-classes
+[INFO] 
+[INFO] --- surefire:3.0.0:test (default-test) @ pet-clinic ---
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ pet-clinic ---
+[INFO] 
+[INFO] --- spring-boot:3.1.2:repackage (repackage) @ pet-clinic ---
+[INFO] Replacing main artifact /var/lib/jenkins/workspace/petClinic1/target/pet-clinic-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/lib/jenkins/workspace/petClinic1/target/pet-clinic-1.0.0.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.697 s
+[INFO] Finished at: 2024-10-20T04:11:05Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Containerize)
+[Pipeline] echo
+Containerizing the App with Docker
+[Pipeline] sh
++ docker build -t pet-clinic:1.0.0 .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 705B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/openjdk:17-jdk-slim
+#2 DONE 1.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/5] FROM docker.io/library/openjdk:17-jdk-slim@sha256:aaa3b3cb27e3e520b8f116863d0580c438ed55ecfa0bc126b41f68c3f62f9774
+#4 resolve docker.io/library/openjdk:17-jdk-slim@sha256:aaa3b3cb27e3e520b8f116863d0580c438ed55ecfa0bc126b41f68c3f62f9774 0.0s done
+#4 sha256:aaa3b3cb27e3e520b8f116863d0580c438ed55ecfa0bc126b41f68c3f62f9774 547B / 547B done
+#4 sha256:779635c0c3d23cc8dbab2d8c1ee4cf2a9202e198dfc8f4c0b279824d9b8e0f22 953B / 953B done
+#4 sha256:37cb44321d0423bc57266a3bff658daf00478e4cdf2d3b8091f785310534256d 4.80kB / 4.80kB done
+#4 sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3 0B / 31.38MB 0.1s
+#4 sha256:44d3aa8d076675d49d85180b0ced9daef210fe4fdff4bdbb422b9cf384e591d0 0B / 1.58MB 0.1s
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 0B / 187.90MB 0.1s
+#4 sha256:44d3aa8d076675d49d85180b0ced9daef210fe4fdff4bdbb422b9cf384e591d0 1.05MB / 1.58MB 0.4s
+#4 sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3 2.10MB / 31.38MB 0.5s
+#4 sha256:44d3aa8d076675d49d85180b0ced9daef210fe4fdff4bdbb422b9cf384e591d0 1.58MB / 1.58MB 0.4s done
+#4 ...
+
+#5 [internal] load build context
+#5 transferring context: 47.82MB 0.6s done
+#5 DONE 0.6s
+
+#4 [1/5] FROM docker.io/library/openjdk:17-jdk-slim@sha256:aaa3b3cb27e3e520b8f116863d0580c438ed55ecfa0bc126b41f68c3f62f9774
+#4 sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3 4.19MB / 31.38MB 0.7s
+#4 sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3 6.29MB / 31.38MB 1.1s
+#4 sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3 11.53MB / 31.38MB 1.3s
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 10.49MB / 187.90MB 1.3s
+#4 sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3 20.97MB / 31.38MB 1.5s
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 22.02MB / 187.90MB 1.5s
+#4 sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3 26.21MB / 31.38MB 1.6s
+#4 sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3 30.41MB / 31.38MB 1.7s
+#4 sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3 31.38MB / 31.38MB 1.7s done
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 46.14MB / 187.90MB 1.9s
+#4 extracting sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 65.01MB / 187.90MB 2.1s
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 94.37MB / 187.90MB 2.4s
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 111.59MB / 187.90MB 2.6s
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 121.63MB / 187.90MB 2.7s
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 136.31MB / 187.90MB 2.9s
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 145.75MB / 187.90MB 3.0s
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 167.37MB / 187.90MB 3.2s
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 187.90MB / 187.90MB 3.5s
+#4 sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 187.90MB / 187.90MB 3.5s done
+#4 extracting sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3 2.8s done
+#4 extracting sha256:44d3aa8d076675d49d85180b0ced9daef210fe4fdff4bdbb422b9cf384e591d0 0.1s done
+#4 extracting sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 0.1s
+#4 extracting sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 3.3s done
+#4 DONE 8.3s
+
+#6 [2/5] RUN mkdir /app
+#6 DONE 0.9s
+
+#7 [3/5] COPY target/pet-clinic-1.0.0.jar /app/pet-clinic-1.0.0.jar
+#7 DONE 0.3s
+
+#8 [4/5] COPY src/main/resources/application.properties /app/application.properties
+#8 DONE 0.0s
+
+#9 [5/5] WORKDIR /app
+#9 DONE 0.0s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 0.3s done
+#10 writing image sha256:cca7d954074ec8e53b2951ed942ef0b9506f2702b3eaa4344f7a008c69522314
+#10 writing image sha256:cca7d954074ec8e53b2951ed942ef0b9506f2702b3eaa4344f7a008c69522314 done
+#10 naming to docker.io/library/pet-clinic:1.0.0 0.0s done
+#10 DONE 0.3s
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] echo
+Deploying the App with Docker
+[Pipeline] sh
++ docker run -d -p 4040:4040 pet-clinic:1.0.0
+3f47ed219da99d2142066defcbc4cda3216e4d90b7cfe93d99d81b3da48556f2
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] cleanWs
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
